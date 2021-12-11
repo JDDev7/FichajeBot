@@ -50,12 +50,16 @@ async def parar(ctx):
       db[username]["weekly"] = weekly_sec
       horas = floor(weekly_sec/3600)
       minutos = floor((weekly_sec%3600)/60)
-      if minutos < 10:
-        minutos = '0'+str(minutos)
+      start_min = start_moment.minute
+      if start_min < 10:
+        start_min = '0'+str(start_min)
+      stop_min = moment.minute
+      if stop_min < 10:
+        stop_min = '0'+str(stop_min)
       user_string = f"Nombre del empleado: {username}"
       dia_string = f"Día: [{moment.day}/{moment.month}]"
-      entrada_string = f"Hora de entrada: [{start_moment.hour}.{start_moment.minute}]"
-      salida_string = f"Hora de salida: [{moment.hour}.{moment.minute}]"
+      entrada_string = f"Hora de entrada: [{start_moment.hour}.{start_min}]"
+      salida_string = f"Hora de salida: [{moment.hour}.{stop_min}]"
       horas_weekly_string = f"Horas semanales: [{horas}h{minutos}min]"
       await ctx.send(f"{user_string}\n{dia_string}\n{entrada_string}\n{salida_string}\n{horas_weekly_string}")
       guardarDB()
