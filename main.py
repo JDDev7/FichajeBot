@@ -4,6 +4,7 @@ import datetime
 from dateutil import tz
 from math import floor
 import pickle
+from keep_alive import keep_alive
 
 db = {}
 
@@ -49,6 +50,8 @@ async def parar(ctx):
       db[username]["weekly"] = weekly_sec
       horas = floor(weekly_sec/3600)
       minutos = floor((weekly_sec%3600)/60)
+      if minutos < 10:
+        minutos = '0'+str(minutos)
       user_string = f"Nombre del empleado: {username}"
       dia_string = f"Día: [{moment.day}/{moment.month}]"
       entrada_string = f"Hora de entrada: [{start_moment.hour}.{start_moment.minute}]"
@@ -66,4 +69,6 @@ async def reset(ctx):
       db[key]['weekly'] = 0
   await ctx.send("Horas semanales reseteadas")
 
+
+keep_alive()
 client.run(TOKEN)

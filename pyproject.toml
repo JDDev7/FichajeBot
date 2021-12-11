@@ -1,12 +1,13 @@
 [tool.poetry]
-name = "fichajebot"
+name = "FichajeBot"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "Bot de fichaje"
+authors = ["JDMoreno <jdmorenopulido@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 "discord.py" = "^1.7.3"
+Flask = "^2.0.2"
 
 [tool.poetry.dev-dependencies]
 
