@@ -66,12 +66,16 @@ async def parar(ctx):
       return
   await ctx.send("Error, {} no ha empezado a fichar".format(username))
 
-#@client.command()
-#async def reset(ctx):
+@client.command()
+async def reset(ctx):
+  username = ctx.author.nick
+  db[username]['weekly'] = 0
+  await ctx.send("Horas semanales reseteadas")
+
 #  for key in db.keys():
 #    if 'weekly' in db[key]:
 #      db[key]['weekly'] = 0
-#  await ctx.send("Horas semanales reseteadas")
+#  
 
 #Comentado el comando reset hasta que arreglemos el asunto
 
